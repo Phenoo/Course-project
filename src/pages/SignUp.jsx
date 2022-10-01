@@ -48,8 +48,8 @@ const SignUp = () => {
                 />
               </div>
               <div className="btn-container">
-                <button id='signin' type='submit'>Create Account</button>
-                <button id='googlein' type='submit'>
+                <button className='signin' type='submit'>Create Account</button>
+                <button className='googlein' type='submit'>
                   <img src={SignImg} alt="google" />
                   Sign up with Google</button>
               </div>

@@ -11,6 +11,11 @@ const Navigation = () => {
         <section className="navheader">
           <Logo />
           <div className={`menu ${navbar ? 'navbar' : ''}`} >
+            <div className='none'>
+              {
+                navbar ?  <Logo /> : ''
+              }
+            </div>
             <ul>
               <li>
                 <Link to='/'>

@@ -27,6 +27,10 @@ a {
     font-family: "Poppins";
 }
 
+li {
+    font-family: "Inter";
+}
+
 h1,
 h5 {
     font-family: "Poppins";
@@ -50,6 +54,11 @@ select,
 input {
     border: none;
     outline: none;
+    font-family: "Poppins";
+}
+
+label {
+    font-family: "Inter";
 }
 
 section {
@@ -147,7 +156,7 @@ nav {
     }
     li {
         a {
-            font-family: "Roboto";
+            font-family: "Inter";
             text-transform: capitalize;
             font-size: 1.1rem;
             font-weight: 600;
@@ -197,7 +206,7 @@ nav {
             width: 470px;
             background: #fff;
             border-radius: 40px;
-            padding: 0 1.5rem;
+            padding: 10px 1.5rem;
             form {
                 display: flex;
                 align-items: center;

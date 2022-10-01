@@ -25,7 +25,7 @@ const SignIn = () => {
             back home
           </Link>
         </div>
-        <div className="form-sign">
+        <div className="form sign">
         <div className="header-sign">
           <Logo />
         </div>
@@ -48,8 +48,8 @@ const SignIn = () => {
               </a>
             </div>
             <div className="btn-container">
-              <button id='signin' type='submit'>Sign in</button>
-              <button id='googlein' type='submit'>
+              <button className='signin' type='submit'>Sign in</button>
+              <button className='googlein' type='submit'>
                 <img src={SignImg} alt="google" />
                 Sign in with Google</button>
             </div>
