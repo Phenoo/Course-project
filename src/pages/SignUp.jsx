@@ -20,40 +20,41 @@ const SignUp = () => {
         </h4>
       </div>
       <div className='box'>
-        <div className="header">
-          <Logo />
-          <div>
-            <Link to='/'>
-              back home
-            </Link>
-          </div>
+        <div className="left top">
+          <Link to='/'>
+            back home
+          </Link>
         </div>
+        <div className="form">
+          <div className="form-sign">
+            <div className="header-sign">
+              <Logo />
+            </div>
+            <form onSubmit={handleSubmit}>
+              <div className="form-input">
+                <label htmlFor="">email</label>
+                <input type="email" id="email" placeholder='Enter your email'
+                />
+              </div>
 
-        <div className="form-sign">
-          <form onSubmit={handleSubmit}>
-            <div className="form-input">
-              <label htmlFor="">email</label>
-              <input type="email" id="email" placeholder='Enter your email'
-              />
-            </div>
-
-            <div className="form-input">
-              <label htmlFor="">password</label>
-              <input type="password"  id="password"  placeholder='Enter your password'
-              />
-            </div>
-            <div className="form-input">
-              <label htmlFor="">confirm password</label>
-              <input type="password"  id="password"  placeholder='Enter your password'
-              />
-            </div>
-            <div className="btn-container">
-              <button id='signin' type='submit'>Create Account</button>
-              <button id='googlein' type='submit'>
-                <img src={SignImg} alt="google" />
-                Sign up with Google</button>
-            </div>
-          </form>
+              <div className="form-input">
+                <label htmlFor="">password</label>
+                <input type="password"  id="password"  placeholder='Enter your password'
+                />
+              </div>
+              <div className="form-input">
+                <label htmlFor="">confirm password</label>
+                <input type="password"  id="password"  placeholder='Enter your password'
+                />
+              </div>
+              <div className="btn-container">
+                <button id='signin' type='submit'>Create Account</button>
+                <button id='googlein' type='submit'>
+                  <img src={SignImg} alt="google" />
+                  Sign up with Google</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>

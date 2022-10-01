@@ -20,16 +20,15 @@ const SignIn = () => {
         </h4>
       </div>
       <div className='box'>
-        <div className="header">
-          <Logo />
-          <div>
-            <Link to='/'>
-              back home
-            </Link>
-          </div>
+        <div className="left top">
+          <Link to='/'>
+            back home
+          </Link>
         </div>
-
         <div className="form-sign">
+        <div className="header-sign">
+          <Logo />
+        </div>
           <form onSubmit={handleSubmit}>
             <div className="form-input">
               <label htmlFor="">email</label>
@@ -43,10 +42,7 @@ const SignIn = () => {
 
               />
             </div>
-            <div className="flex">
-              <a href="/">
-                &nbsp;
-              </a>
+            <div className="left">
               <a href="/">
                 forgot password ?
               </a>

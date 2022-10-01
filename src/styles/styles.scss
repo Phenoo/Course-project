@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Silkscreen&family=Inter&family=Jost&family=Roboto&family=Montserrat&family=Open+Sans&family=Poppins&display=swap');
 $red-color: #f53b3b;
 * {
     padding: 0;
@@ -103,9 +104,61 @@ button {
     }
 }
 
-.nav-links {
+nav {
+    padding: 5px 0 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 3rem;
+    background: #fff;
+    z-index: 10;
+    box-shadow: 0px 4px 15px rgb(0 0 0 / 8%);
+    .navheader {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.logo {
+    z-index: 100;
+    svg {
+        height: 50px;
+    }
+}
+
+.none {
+    display: none;
+}
+
+.menu {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
     ul {
+        display: flex;
         gap: 1rem;
+        font-family: "Poppins";
+    }
+    li {
+        a {
+            font-family: "Roboto";
+            text-transform: capitalize;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+    }
+}
+
+.menu-btn {
+    display: none;
+    svg {
+        font-size: 1.4rem;
     }
 }
 
@@ -141,19 +194,19 @@ button {
             margin: 1rem 0;
         }
         .home-form {
-            width: 420px;
+            width: 470px;
             background: #fff;
             border-radius: 40px;
-            padding: 1rem;
+            padding: 0 1.5rem;
             form {
                 display: flex;
                 align-items: center;
                 // justify-content: space-between;
                 gap: 1rem;
                 input {
-                    width: 200px;
+                    width: 250px;
                     padding: 10px;
-                    height: 3rem;
+                    height: 2rem;
                     font-family: "Poppins";
                     &::placeholder {
                         text-transform: capitalize;
@@ -174,7 +227,7 @@ button {
             }
             button {
                 background: $red-color;
-                padding: 1rem;
+                padding: 12px;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
@@ -384,10 +437,7 @@ button {
             position: relative;
             img {
                 transition: all 0.3s ease;
-                &:hover {
-                    width: 100%;
-                    transform: scale(1.1);
-                }
+                border-radius: 15px;
             }
             .span {
                 position: absolute;
@@ -730,6 +780,51 @@ footer {
     section {
         width: 90%;
     }
+    nav {
+        padding: 10px 0;
+    }
+    .menu-btn {
+        display: block;
+    }
+    .none {
+        display: flex;
+    }
+    .menu {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        transition: width 0.5s ease;
+        select {
+            width: 130px;
+            font-size: 1.5rem;
+            // padding-left:0;
+            padding: 0;
+        }
+    }
+    .navbar {
+        display: flex;
+        width: 60vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        flex-direction: column;
+        justify-content: right;
+        align-items: flex-start;
+        gap: 3rem;
+        padding: 2rem;
+        background: #fff;
+        z-index: 100;
+        transition: width 0.5s ease;
+        ul {
+            flex-direction: column;
+        }
+        li {
+            a {
+                font-size: 1.5rem;
+            }
+        }
+    }
     .tophead {
         font-size: 1.7rem;
     }
@@ -862,13 +957,25 @@ footer {
         .home-text {
             .home-form {
                 width: 320px;
+                select {
+                    width: 100px;
+                }
                 form {
                     input {
                         width: 120px;
                     }
                 }
                 button {
-                    padding: 7px;
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    svg {
+                        font-size: 1rem;
+                    }
+                    display: block;
+                    // padding: 7px;
+                    width: 40px;
+                    height: 40px;
                 }
             }
         }
@@ -893,16 +1000,21 @@ footer {
     .home-container {
         .home-text {
             select {
-                display: none;
+                font-size: 0.7rem;
             }
             .home-form {
                 width: 100%;
-                max-width: 290px;
+                max-width: 300px;
                 padding: 10px;
+                flex-wrap: wrap;
+                button {
+                    width: 30px;
+                    height: 30px;
+                }
                 form {
-                    justify-content: space-between;
+                    gap: 2px;
                     input {
-                        width: 95%;
+                        width: 150px;
                     }
                 }
             }

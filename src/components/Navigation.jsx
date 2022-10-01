@@ -1,14 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
+import {FaBars, FaTimes} from 'react-icons/fa'
 
 const Navigation = () => {
+  const [navbar, setNavbar] = useState(false);
   return (
     <nav>
       <header>
-        <section className="header">
+        <section className="navheader">
           <Logo />
-          <div className="nav-links">
+          <div className={`menu ${navbar ? 'navbar' : ''}`} >
             <ul>
               <li>
                 <Link to='/'>
@@ -35,20 +37,25 @@ const Navigation = () => {
                   blog
                 </Link>
               </li>
-            </ul>
+              </ul>
+            <div className="nav-buttons">
+              <button className="btn btn-blue">
+                <Link to='/signup'>
+                  sign up
+                </Link>
+              </button>
+              <button className="btn btn-blue">
+                <Link to='/signin'>
+                  sign in
+                </Link>
+              </button>
+            </div>
           </div>
-          <div className="nav-buttons">
-            <button className="btn btn-trans">
-              <Link to='/signup'>
-                sign up
-              </Link>
-            </button>
-            <button className='btn btn-blue'>
-              <Link to='/signin'>
-                sign in
-              </Link>
-            </button>
-          </div>
+          <button className='menu-btn' onClick={() => setNavbar(!navbar)}>
+            {
+              navbar ? <FaTimes/ > : <FaBars />
+            }
+          </button>
         </section>
       </header>
     </nav>

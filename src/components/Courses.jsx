@@ -180,9 +180,11 @@ const Courses = () => {
                           <p>{item.rating}</p>
                           <p>15</p>
                         </div>
-                        <button className="btn btn-blue">
-                          buy now
-                        </button>
+                        <div>
+                          <button className="btn btn-blue">
+                            buy now
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </SwiperSlide>
