@@ -7,6 +7,19 @@
     .logo {
         width: 50px;
     }
+    .image {
+        background: rgb(255, 226, 172);
+        gap: 2rem;
+        h4 {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        img {
+            width: 400px;
+            height: 500px;
+            object-fit: contain;
+        }
+    }
 }
 
 .box {
@@ -41,20 +54,6 @@
         font-weight: 500;
         text-align: left;
         font-size: 0.7rem;
-    }
-}
-
-.image {
-    background: rgb(255, 226, 172);
-    gap: 2rem;
-    h4 {
-        font-weight: 600;
-        font-size: 1.5rem;
-    }
-    img {
-        width: 400px;
-        height: 500px;
-        object-fit: contain;
     }
 }
 
@@ -120,9 +119,9 @@
 @media screen and (max-width: 800px) {
     .signin-container {
         grid-template-columns: 100%;
-    }
-    .image {
-        display: none;
+        .image {
+            display: none;
+        }
     }
 }
 
