@@ -36,6 +36,7 @@ li {
 h1,
 h5 {
     font-family: "Poppins";
+    font-weight: 600;
 }
 
 p {
@@ -45,6 +46,7 @@ p {
 h4,
 h6 {
     font-family: "Inter";
+    font-weight: 600;
 }
 
 img {
@@ -95,11 +97,11 @@ button {
     padding: 10px 1.5rem;
     text-transform: capitalize;
     transition: all 0.3s ease;
-    color: #ff84ff;
+    color: #f53b3b;
 }
 
 .btn-blue {
-    border: 4px solid #ff84ff;
+    border: 4px solid #f53b3b;
 }
 
 .header {
@@ -194,7 +196,7 @@ nav {
 
 .home-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 60% 40%;
     place-items: center;
     gap: 2rem;
     .home-text {
@@ -206,14 +208,17 @@ nav {
             margin: 1rem 0;
         }
         .home-form {
-            width: 470px;
+            // width: 470px;
             background: #fff;
             border-radius: 40px;
             padding: 10px 1.5rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
             form {
                 display: flex;
                 align-items: center;
-                // justify-content: space-between;
+                flex-wrap: wrap;
                 gap: 1rem;
                 input {
                     width: 250px;
@@ -510,7 +515,6 @@ nav {
         }
         button {
             font-weight: 700;
-            color: #ff84ff;
             text-transform: uppercase;
         }
     }
@@ -592,14 +596,14 @@ nav {
         }
         h4 {
             text-transform: capitalize;
-            font-size: 1.3rem;
-            font-weight: 500;
+            font-weight: 600;
             text-align: center;
         }
         h6 {
             font-size: 1.1rem;
             font-weight: 400;
             text-transform: capitalize;
+            margin: 1rem 0;
         }
     }
 }
@@ -685,9 +689,6 @@ nav {
 }
 
 .blogs {
-    // background: url("../assets/bgimg.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
     position: relative;
     .height {
         height: 500px;
@@ -820,18 +821,20 @@ footer {
         align-items: flex-start;
         gap: 3rem;
         padding: 2rem;
-        background: #f53b3b;
-        color: #fff;
+        background: #fff;
+        color: #000;
         z-index: 100;
         transition: width 0.5s ease;
         touch-action: pan-y;
         ul {
+            gap: 1.5rem;
             flex-direction: column;
         }
         li {
             a {
                 font-size: 1.25rem;
                 font-weight: 500;
+                text-transform: uppercase;
             }
         }
     }
@@ -973,6 +976,9 @@ footer {
 }
 
 @media screen and (max-width: 400px) {
+    .tophead {
+        font-size: 1.25rem;
+    }
     .home-container {
         .home-text {
             h1 {
@@ -1017,6 +1023,17 @@ footer {
             }
         }
     }
+    .offers {
+        h6 {
+            font-size: 1rem;
+        }
+    }
+    .mentor {
+        h6,
+        p {
+            font-size: 0.9rem;
+        }
+    }
     footer {
         li {
             font-size: 0.9rem;
@@ -1040,7 +1057,7 @@ footer {
                     height: 30px;
                 }
                 form {
-                    gap: 2px;
+                    gap: 10px;
                     input {
                         width: 150px;
                     }

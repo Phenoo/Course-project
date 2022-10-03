@@ -160,7 +160,7 @@ const Update = () => {
                       <FaStar />
                       <FaStar color='grey' /> 
                       <p>{item.rating}</p>
-                      <p>15</p>
+                      <p>(15)</p>
                     </div>
                     <button className="btn btn-blue">
                       buy now

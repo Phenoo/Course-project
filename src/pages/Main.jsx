@@ -28,9 +28,8 @@ const Main = () => {
       `
       .home-container,
       .goals img,
-      .item,
-      .header,
-      .center
+      .center,
+      .mentor.grid
       `,
       {
         opacity: 0,
@@ -38,23 +37,7 @@ const Main = () => {
       }
     )
   })
-  // useEffect(() => {
-  //   const sright = scrollreveal({
-  //     origin: "right",
-  //     distance: "60px",
-  //     duration: 2000,
-  //     reset: true
-  //   });
-  //   sright.reveal(
-  //     `
-  //     .goals img,
-  //     `,
-  //     {
-  //       opacity: 0,
-  //       interval: 300,
-  //     }
-  //   )
-  // })
+
 
 
   return (
