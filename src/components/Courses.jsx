@@ -178,7 +178,7 @@ const Courses = () => {
                           <FaStar />
                           <FaStar color='grey' /> 
                           <p>{item.rating}</p>
-                          <p>15</p>
+                          <p>(15)</p>
                         </div>
                         <div>
                           <button className="btn btn-blue">

@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Silkscreen&family=Inter&family=Jost&family=Roboto&family=Montserrat&family=Open+Sans&family=Poppins&display=swap');
 $red-color: #f53b3b;
-* {
+*,
+*::before,
+*::after {
     padding: 0;
     margin: 0;
 }
@@ -93,6 +95,7 @@ button {
     padding: 10px 1.5rem;
     text-transform: capitalize;
     transition: all 0.3s ease;
+    color: #ff84ff;
 }
 
 .btn-blue {
@@ -313,7 +316,7 @@ nav {
 
 .newswiper {
     width: 100%;
-    height: 650px;
+    height: 600px;
     .swiperslide {
         width: auto;
     }
@@ -325,20 +328,22 @@ nav {
 
 .swiper-b {
     width: 100%;
-    height: 430px;
+    height: 350px;
     .swiperslide {
         width: auto;
     }
 }
 
 .swiper-pagination-bullet {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     background: #543d3d;
+    transition: all 0.3s ease;
 }
 
 .swiper-pagination-bullet-active {
     background: $red-color;
+    transition: all 0.3s ease;
 }
 
 .category {
@@ -550,7 +555,7 @@ nav {
 
 .tutors {
     padding: 3rem 0;
-    background: url("../assets/bgimg.jpeg");
+    // background: url("../assets/bgimg.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -680,7 +685,7 @@ nav {
 }
 
 .blogs {
-    background: url("../assets/bgimg.jpeg");
+    // background: url("../assets/bgimg.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -744,14 +749,12 @@ footer {
         margin-top: 1rem;
         p {
             text-transform: capitalize;
+            font-size: 0.8rem;
         }
         .social {
             ul {
                 display: flex;
                 gap: 1rem;
-                svg {
-                    font-size: 1.4rem;
-                }
             }
         }
     }
@@ -817,21 +820,24 @@ footer {
         align-items: flex-start;
         gap: 3rem;
         padding: 2rem;
-        background: #fff;
+        background: #f53b3b;
+        color: #fff;
         z-index: 100;
         transition: width 0.5s ease;
+        touch-action: pan-y;
         ul {
             flex-direction: column;
         }
         li {
             a {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
+                font-weight: 500;
             }
         }
     }
-    .nav-buttons {
-        flex-direction: column;
-    }
+    // .nav-buttons {
+    //     flex-direction: column;
+    // }
     .tophead {
         font-size: 1.7rem;
     }
@@ -896,6 +902,10 @@ footer {
 @media screen and (max-width: 500px) {
     section {
         width: 95%;
+    }
+    .navbar {
+        width: 70vw;
+        padding: 1rem;
     }
     .home-container {
         .home-text {
@@ -965,6 +975,9 @@ footer {
 @media screen and (max-width: 400px) {
     .home-container {
         .home-text {
+            h1 {
+                font-size: 1.65rem;
+            }
             .home-form {
                 width: 320px;
                 select {
@@ -1002,6 +1015,11 @@ footer {
                     font-size: 0.7rem;
                 }
             }
+        }
+    }
+    footer {
+        li {
+            font-size: 0.9rem;
         }
     }
 }
