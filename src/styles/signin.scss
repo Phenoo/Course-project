@@ -58,6 +58,16 @@
     }
 }
 
+.red {
+    form {
+        .form-input {
+            input {
+                border: 1px solid red;
+            }
+        }
+    }
+}
+
 .form {
     width: 450px;
     margin: 0 auto;
@@ -113,6 +123,55 @@
         img {
             width: 30px;
             height: 30px;
+        }
+    }
+}
+
+.verify-email {
+    background: #fff;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    .verify-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 10px;
+    }
+    .btn-times {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1.5rem;
+    }
+    h4 {
+        text-transform: capitalize;
+        font-size: 2rem;
+    }
+    .mail {
+        font-size: 200px;
+        line-height: 1.5rem;
+    }
+    .btn-container {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        button {
+            font-size: 0.7rem;
+            border-radius: 5px;
+            background: #f53b3b;
+            color: #fff;
+            padding: 10px;
+            &:nth-child(2n),
+            &:nth-child(3n) {
+                background: #fff;
+                color: #f53b3b;
+                border: 1px solid #f53b3b;
+            }
         }
     }
 }

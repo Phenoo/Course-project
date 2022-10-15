@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Img1 from '../assets/login-img.png'
 import Logo from '../components/Logo'
@@ -6,11 +6,49 @@ import Logo from '../components/Logo'
 import '../styles/signin.scss'
 
 import SignImg from '../assets/images__14_-removebg-preview.png'
+import axios from 'axios'
 
 const SignIn = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState(false);
+  const userRef = useRef();
+
+
+  useEffect(() => {
+    userRef.current.focus();
+  }, [])
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(email, password)
+    const configuration = {
+      method: 'post',
+      url: 'https://ideas4africa.tech/api/login',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept' : 'application/json'
+      },
+      withCredentials: false,
+      data: {
+        email,
+        password,
+      },
+    };
+  
+    axios(configuration)
+    .then((result) => {
+      console.log(result, 'very good')
+    })
+    .catch((err) => {
+      err = new Error()
+      console.log(err)
+      setError(true)
+    })
+
   }
+
   return (
     <div className='signin-container'>
       <div className='box image'>
@@ -33,19 +71,29 @@ const SignIn = () => {
             <div className="form-input">
               <label htmlFor="">email</label>
               <input type="email" id="email" placeholder='Enter your email'
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="off"
+              value={email}
+              ref={userRef}
+              required
               />
             </div>
 
             <div className="form-input">
               <label htmlFor="">password</label>
               <input type="password"  id="password"  placeholder='Enter your password'
-
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                required
               />
             </div>
             <div className="left">
               <a href="/">
                 forgot password ?
               </a>
+              <Link to='/signup'>
+                don't have an account yet?
+              </Link>
             </div>
             <div className="btn-container">
               <button className='signin' type='submit'>Sign in</button>

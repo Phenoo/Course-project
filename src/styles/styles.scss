@@ -114,7 +114,8 @@ button {
 
 .logo {
     img {
-        width: 120px;
+        width: 100px;
+        margin: 0 auto;
     }
 }
 
@@ -789,7 +790,7 @@ footer {
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     section {
         width: 90%;
     }
