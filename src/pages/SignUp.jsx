@@ -56,6 +56,8 @@ const SignUp = () => {
       })
       .catch((err) => {
         console.error(err)
+        setLoading(true);
+        closeLoader();
         setError(true)
         setEmail('')
         setName('')
