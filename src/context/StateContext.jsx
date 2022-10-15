@@ -16,8 +16,10 @@ export const AuthProvider = ({children}) => {
   const closeLoader = () => {
     setTimeout(() => {
       setLoading(false);
-    }, 4000);
+    }, 3000);
   }
+
+
   useEffect(() => {
   
     return () => {

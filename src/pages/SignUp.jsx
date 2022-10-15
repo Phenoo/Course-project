@@ -23,16 +23,14 @@ const SignUp = () => {
   const {setLoading, closeLoader} = useAuth()
 
 
-  useEffect(() => {
+  const handleError = () => {
     setTimeout(() => {
-      setError(false)
-    }, 3000)
-  })
-
+      setError(false);
+    }, 8000);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, password, phone)
     const configuration = {
       method: "post",
       url: "https://ideas4africa.tech/api/register",
@@ -49,16 +47,17 @@ const SignUp = () => {
       },
     };
       axios(configuration)
-      .then((result) => {console.log(result)
+      .then((result) => {
         setLoading(true);
         closeLoader();
-        setVerifiedEmail(!verifiedEmail)
+        setVerifiedEmail(true)
       })
       .catch((err) => {
         console.error(err)
         setLoading(true);
         closeLoader();
         setError(true)
+        handleError();
         setEmail('')
         setName('')
         setPassword('')
