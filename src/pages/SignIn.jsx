@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import Img1 from '../assets/login-img.png'
 import Logo from '../components/Logo'
 
+import {useAuth} from '../context/StateContext'
+
 import '../styles/signin.scss'
 
 import SignImg from '../assets/images__14_-removebg-preview.png'
@@ -13,6 +15,8 @@ const SignIn = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState(false);
   const userRef = useRef();
+
+  const {setUser, setLoading, closeLoader} = useAuth()
 
 
   useEffect(() => {
@@ -40,10 +44,15 @@ const SignIn = () => {
     axios(configuration)
     .then((result) => {
       console.log(result, 'very good')
+      setLoading(true);
+      closeLoader();
+      setUser(true);
     })
     .catch((err) => {
       err = new Error()
       console.log(err)
+      setLoading(true);
+      closeLoader();
       setError(true)
     })
 
@@ -88,9 +97,9 @@ const SignIn = () => {
               />
             </div>
             <div className="left">
-              <a href="/">
+              <Link to="/signup">
                 forgot password ?
-              </a>
+              </Link>
               <Link to='/signup'>
                 don't have an account yet?
               </Link>

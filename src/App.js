@@ -12,10 +12,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route element={<ProtectedRoutes />} >
-          <Route path="/user" element={<Dashboard />} />
-        </Route>
-        {/* <ProtectedRoutes path='/user' element={<Dashboard />} /> */}
+        <Route exact path='/user' element={<ProtectedRoutes><Dashboard /></ProtectedRoutes>} />
       </Routes>
     </>
   );

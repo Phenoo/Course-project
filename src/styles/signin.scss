@@ -127,6 +127,11 @@
     }
 }
 
+.left {
+    display: flex;
+    justify-content: space-between;
+}
+
 .verify-email {
     background: #fff;
     height: 100vh;

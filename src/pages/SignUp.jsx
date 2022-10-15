@@ -10,6 +10,9 @@ import axios from 'axios'
 import { AiOutlineMail } from 'react-icons/ai'
 import { FaTimes } from 'react-icons/fa'
 
+import {useAuth} from '../context/StateContext'
+
+
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,6 +20,8 @@ const SignUp = () => {
   const [name, setName] = useState('');
   const [error, setError] = useState(false);
   const [verifiedEmail, setVerifiedEmail] = useState(false);
+  const {setLoading, closeLoader} = useAuth()
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,15 +48,19 @@ const SignUp = () => {
         name
       },
     };
-
       axios(configuration)
       .then((result) => {console.log(result)
+        setLoading(true);
+        closeLoader();
         setVerifiedEmail(!verifiedEmail)
-        setError(false)
       })
       .catch((err) => {
         console.error(err)
         setError(true)
+        setEmail('')
+        setName('')
+        setPassword('')
+        setPhone('')
       })
   }
 
@@ -114,6 +123,7 @@ const SignUp = () => {
                 <label htmlFor="">Name</label>
                 <input type="text" id="name" placeholder='Enter your email'
                   onChange={(e) => setName(e.target.value)}
+                  value={name}
                   required
                 />
               </div>
@@ -121,6 +131,7 @@ const SignUp = () => {
                 <label htmlFor="">email</label>
                 <input type="email" id="email" placeholder='Enter your email'
                   onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                   required
                 />
               </div>
@@ -129,6 +140,7 @@ const SignUp = () => {
                 <label htmlFor="">password</label>
                 <input type="password"  id="password"  placeholder='Enter your password'
                   onChange={(e) => setPassword(e.target.value)}
+                  value={password}
                   required
                 />
               </div>
@@ -137,6 +149,7 @@ const SignUp = () => {
                 <input type="text"  id="phone"  placeholder='Enter your password'
                   onChange={(e) => setPhone(e.target.value)}
                   required
+                  value={phone}
                 />
               </div>
               <div className="btn-container">
@@ -145,6 +158,9 @@ const SignUp = () => {
                   <img src={SignImg} alt="google" />
                   Sign up with Google</button>
               </div>
+              <Link to="/signin">
+                have an account already? Log in
+              </Link>
             </form>
           </div>
         </div>
