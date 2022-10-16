@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Img1 from '../assets/login-img.png'
 import Logo from '../components/Logo'
 
@@ -8,13 +8,14 @@ import {useAuth} from '../context/StateContext'
 import '../styles/signin.scss'
 
 import SignImg from '../assets/images__14_-removebg-preview.png'
-import axios from 'axios'
+
 
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(false);
   const userRef = useRef();
+  const navigate = useNavigate();
 
   const {setUser, setLoading, closeLoader} = useAuth()
 
@@ -23,39 +24,38 @@ const SignIn = () => {
     userRef.current.focus();
   }, [])
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email, password)
-    const configuration = {
-      method: 'post',
-      url: 'https://ideas4africa.tech/api/login',
+  async function loginUser(credentials){
+    return fetch( "https://ideas4africa.tech/api/login",{
+      method: "POST",
       headers: { 
         'Content-Type': 'application/json',
-        'Accept' : 'application/json'
+        'Accept': 'application/json'
       },
-      withCredentials: false,
-      data: {
-        email,
-        password,
-      },
-    };
-  
-    axios(configuration)
-    .then((result) => {
-      console.log(result, 'very good')
-      setLoading(true);
-      closeLoader();
-      setUser(true);
+      body: JSON.stringify(credentials)
     })
-    .catch((err) => {
-      err = new Error()
+    .then(data => data.json())
+    .catch((err) =>{
       console.log(err)
-      setLoading(true);
-      closeLoader();
       setError(true)
     })
+    .then(response => {
+      console.log("response", response);
+      setLoading(true);
+      closeLoader();
+      navigate('/user')
+    }).catch(error => {
+      console.log("some error occurred", error);
+      setError(true)
+    });
+  }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = await loginUser({
+      email,
+      password,
+    })
+    setUser(token)
   }
 
   return (
@@ -72,7 +72,7 @@ const SignIn = () => {
             back home
           </Link>
         </div>
-        <div className="form sign">
+        <div className={`form sign ${error ? 'red' : ''}`}>
         <div className="header-sign">
           <Logo />
         </div>

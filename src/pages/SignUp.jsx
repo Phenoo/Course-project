@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Img1 from '../assets/login-img.png'
 import Logo from '../components/Logo'
@@ -6,11 +6,9 @@ import Logo from '../components/Logo'
 import '../styles/signin.scss'
 
 import SignImg from '../assets/images__14_-removebg-preview.png'
-import axios from 'axios'
-import { AiOutlineMail } from 'react-icons/ai'
-import { FaTimes } from 'react-icons/fa'
 
 import {useAuth} from '../context/StateContext'
+import VerifyEmail from '../components/VerifyEmail'
 
 
 const SignUp = () => {
@@ -20,86 +18,48 @@ const SignUp = () => {
   const [name, setName] = useState('');
   const [error, setError] = useState(false);
   const [verifiedEmail, setVerifiedEmail] = useState(false);
-  const {setLoading, closeLoader} = useAuth()
+  const {setUser} = useAuth()
 
 
-  const handleError = () => {
-    setTimeout(() => {
-      setError(false);
-    }, 8000);
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const configuration = {
-      method: "post",
-      url: "https://ideas4africa.tech/api/register",
+  async function signupUser(credentials){
+    return fetch( "https://ideas4africa.tech/api/register",{
+      method: "POST",
       headers: { 
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      withCredentials: false,
-      data: {
-        email,
-        password,
-        phone,
-        name
-      },
-    };
-      axios(configuration)
-      .then((result) => {
-        setLoading(true);
-        closeLoader();
-        setVerifiedEmail(true)
-      })
-      .catch((err) => {
-        console.error(err)
-        setLoading(true);
-        closeLoader();
-        setError(true)
-        handleError();
-        setEmail('')
-        setName('')
-        setPassword('')
-        setPhone('')
-      })
+      body: JSON.stringify(credentials)
+    })
+    .then(data => data.json())
+    .catch((err) =>{
+      console.log(err)
+      setError(true)
+    })
+    .then(response => {
+      console.log("response", response);
+      // setLoading(true);
+      // closeLoader();
+      setVerifiedEmail(true);
+    }).catch(error => {
+      console.log("some error occurred", error);
+      setError(true)
+    });
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = await signupUser({
+      name,
+      email,
+      password,
+      phone,
+    })
+    setUser(token)
   }
 
   return (
     <div className='signin-container'>
-      {verifiedEmail &&
-        <div className="verify-email">
-          <div className="verify-container">
-            <button className="btn-times" onClick={() => setVerifiedEmail(false)}>
-              <FaTimes /> 
-            </button>
-            <h4>
-              verify email
-            </h4>
-            <p>
-              Check your email & click link to verify your account
-            </p>
-            <AiOutlineMail className='mail' />
-            <div className="btn-container">
-              <button>
-                <Link to='/signup'>
-                resend email
-                </Link>
-              </button>
-              <button>
-                <Link to='/signin'>
-                  done
-                </Link>
-              </button>
-              <button>
-                <Link to='/'>
-                  contact support
-                </Link>
-              </button>
-            </div>
-          </div>
-        </div>
-      }
+      {verifiedEmail && <VerifyEmail setVerifiedEmail={setVerifiedEmail} />}
       
       <div className='box image'>
         <img src={Img1} alt="sign"/>
