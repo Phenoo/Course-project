@@ -1,0 +1,126 @@
+.dashboard-header {
+    color: #fff;
+    background: #9b009b;
+    padding: 1rem 0;
+    .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .profile {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    .div {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        h4 {
+            font-size: 1.5rem;
+            text-transform: capitalize;
+        }
+        h6 {
+            text-transform: capitalize;
+            background: #fff;
+            color: #111;
+            padding: 10px;
+            border-radius: 20px;
+        }
+        // justify-content: space-between;
+    }
+    p {
+        text-transform: capitalize;
+        margin-top: 1rem;
+    }
+    img {
+        width: 90px;
+        height: 90px;
+        border: 6px solid #fff;
+        border-radius: 10px;
+    }
+    .setting-btn {
+        button {
+            background: #f53b3b;
+            color: #fff;
+            padding: 12px 1.5rem;
+            border-radius: 5px;
+        }
+    }
+}
+
+.dashboard-links {
+    padding: 2rem 0 10px;
+    ul {
+        gap: 2rem;
+        text-transform: capitalize;
+    }
+}
+
+.divider {
+    background: #fff;
+    width: 100%;
+    height: 1px;
+}
+
+.cards-container {
+    padding: 4rem 0;
+    .cards-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        place-items: center;
+    }
+    .card {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+        border: 1px solid #ddd;
+        padding: 1rem;
+        border-radius: 10px;
+        cursor: pointer;
+        h3 {
+            font-size: 2rem;
+        }
+        h4 {
+            font-size: 1.25rem;
+            text-transform: capitalize;
+            margin: 1rem 0;
+            color: #808080;
+        }
+        a {
+            text-transform: capitalize;
+        }
+    }
+    img {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+.transaction-wrapper {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    text-transform: capitalize;
+    .banner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #dfdfdf;
+        padding: 10px 2px;
+    }
+    .right,
+    .just {
+        display: flex;
+        gap: 3rem;
+    }
+    h4 {
+        font-size: 1.75rem;
+        color: #0217fc;
+        margin: 1rem 0 2rem;
+    }
+    h6 {
+        font-weight: 600;
+        font-size: 1rem;
+    }
+}

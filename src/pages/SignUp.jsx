@@ -9,6 +9,7 @@ import SignImg from '../assets/images__14_-removebg-preview.png'
 
 import {useAuth} from '../context/StateContext'
 import VerifyEmail from '../components/VerifyEmail'
+import { FaFacebook } from 'react-icons/fa'
 
 
 const SignUp = () => {
@@ -68,63 +69,85 @@ const SignUp = () => {
         </h4>
       </div>
       <div className='box'>
-        <div className="left top">
-          <Link to='/'>
-            back home
-          </Link>
-        </div>
-        <div className={`form ${error ? 'red' : ''}`}>
-          <div className="form-sign">
-            <div className="header-sign">
-              <Logo />
+        <section>
+          <div className="left top">
+            <Link to='/'>
+              back home
+            </Link>
+          </div>
+            <div className="form sign">
+              <div className="header-sign">
+                <Logo />
+              </div>
+              {error && <p style={{color: 'red', textAlign: 'center'}}>Enter correct values</p> }
+              <form onSubmit={handleSubmit}>
+              <div className="form-input">
+                  <label htmlFor="">Name</label>
+                  <input type="text" id="name" placeholder='Enter your email'
+                    onChange={(e) => setName(e.target.value)}
+                    value={name}
+                    required
+                  />
+                </div>
+                <div className="form-input">
+                  <label htmlFor="">email</label>
+                  <input type="email" id="email" placeholder='Enter your email'
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    required
+                  />
+                </div>
+                <div className="form-input">
+                  <label htmlFor="">password</label>
+                  <input type="password"  id="password"  placeholder='Enter your password'
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    required
+                  />
+                </div>
+                <div className="form-input">
+                  <label htmlFor="">Phone</label>
+                  <input type="text"  id="phone"  placeholder='Enter your password'
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
+                    value={phone}
+                  />
+                </div>
+                <div className="check">
+                  <input type="checkbox" name="Remember" id="" />
+                  <p>I agree to the Terms of Service and Privacy Policy.</p>
+                </div>
+                <div className="btn-container">
+                  <button className='signin' type='submit'>Create Account</button>
+                </div>
+              </form>
             </div>
-            {error && <p style={{color: 'red', textAlign: 'center'}}>Enter correct values</p> }
-            <form onSubmit={handleSubmit}>
-            <div className="form-input">
-                <label htmlFor="">Name</label>
-                <input type="text" id="name" placeholder='Enter your email'
-                  onChange={(e) => setName(e.target.value)}
-                  value={name}
-                  required
-                />
-              </div>
-              <div className="form-input">
-                <label htmlFor="">email</label>
-                <input type="email" id="email" placeholder='Enter your email'
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  required
-                />
-              </div>
-
-              <div className="form-input">
-                <label htmlFor="">password</label>
-                <input type="password"  id="password"  placeholder='Enter your password'
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                  required
-                />
-              </div>
-              <div className="form-input">
-                <label htmlFor="">Phone</label>
-                <input type="text"  id="phone"  placeholder='Enter your password'
-                  onChange={(e) => setPhone(e.target.value)}
-                  required
-                  value={phone}
-                />
-              </div>
-              <div className="btn-container">
-                <button className='signin' type='submit'>Create Account</button>
+          </section>
+          <div className="other-btn">
+            <h4>
+              or
+            </h4>
+              <p>
+                sign in with
+              </p>
+              <div className="container">
                 <button className='googlein' type='submit'>
                   <img src={SignImg} alt="google" />
-                  Sign up with Google</button>
+                  Sign up using Google
+                </button>
+                <p>
+                  |
+                </p>
+                <button className='blue'>
+                  <FaFacebook /> sign up with facebook
+                </button>
               </div>
-              <Link to="/signin">
-                have an account already? Log in
-              </Link>
-            </form>
+              <p>
+                Already have an account? ? <Link to="/signup" className='purple'>
+                    Log in
+                  </Link>
+                </p>
           </div>
-        </div>
       </div>
     </div>
   )
