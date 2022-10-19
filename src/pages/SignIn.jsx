@@ -5,6 +5,7 @@ import Logo from '../components/Logo'
 import {FaFacebook} from 'react-icons/fa'
 import {useAuth} from '../context/StateContext'
 
+import axios from 'axios'
 
 import '../styles/signin.scss'
 
@@ -15,6 +16,7 @@ const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(false);
+  const [errMsg, setErrMsg] = useState('')
   const userRef = useRef();
   const navigate = useNavigate();
 
@@ -25,39 +27,37 @@ const SignIn = () => {
     userRef.current.focus();
   }, [])
 
-  async function loginUser(credentials){
-    return fetch( "https://ideas4africa.tech/api/login",{
-      method: "POST",
-      headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-    .then(data => data.json())
-    .catch((err) =>{
-      console.log(err)
-      setError(true)
-    })
-    .then(response => {
-      console.log("response", response);
-      setLoading(true);
-      closeLoader();
-      navigate('/user')
-    }).catch(error => {
-      console.log("some error occurred", error);
-      setError(true)
-    });
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await loginUser({
-      email,
-      password,
-    })
-    setUser(token)
-  }
+    setLoading(true);
+    closeLoader();
+    try {
+        const response = await axios.post("https://ideas4africa.tech/api/login",
+            JSON.stringify({ email, password }),
+            {
+                headers: { 
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                },
+                withCredentials: true
+            }
+        );
+        // TODO: remove console.logs before deployment
+        console.log(JSON.stringify(response?.data));
+        console.log('success')
+        //console.log(JSON.stringify(response))
+        //clear state and controlled inputs
+        setUser('');
+    } catch (err) {
+        if (!err?.response) {
+            console.log('No Server Response');
+        } else if (err.response?.status === 409) {
+            console.log('Username Taken');
+        } else {
+            console.log('Registration Failed')
+        }
+    }
+}
 
   return (
     <div className='signin-container'>

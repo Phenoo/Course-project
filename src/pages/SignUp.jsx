@@ -19,7 +19,8 @@ const SignUp = () => {
   const [name, setName] = useState('');
   const [error, setError] = useState(false);
   const [verifiedEmail, setVerifiedEmail] = useState(false);
-  const {setUser} = useAuth()
+
+  const {setUser, setLoading, closeLoader} = useAuth()
 
 
   async function signupUser(credentials){
@@ -32,23 +33,16 @@ const SignUp = () => {
       body: JSON.stringify(credentials)
     })
     .then(data => data.json())
-    .catch((err) =>{
+    .catch((err) => {
+      setError(true)
       console.log(err)
-      setError(true)
     })
-    .then(response => {
-      console.log("response", response);
-      // setLoading(true);
-      // closeLoader();
-      setVerifiedEmail(true);
-    }).catch(error => {
-      console.log("some error occurred", error);
-      setError(true)
-    });
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    closeLoader();
     const token = await signupUser({
       name,
       email,
@@ -56,6 +50,7 @@ const SignUp = () => {
       phone,
     })
     setUser(token)
+    console.log(token)
   }
 
   return (
@@ -143,7 +138,7 @@ const SignUp = () => {
                 </button>
               </div>
               <p>
-                Already have an account? ? <Link to="/signup" className='purple'>
+                Already have an account? ? <Link to="/signin" className='purple'>
                     Log in
                   </Link>
                 </p>
